@@ -55,18 +55,16 @@ def compute_metrics(eval_pred):
     }
 
 training_args = TrainingArguments(
-    output_dir="./phish_model_checkpoints",
+    output_dir="./temp_training_output",
     eval_strategy="epoch",
-    save_strategy="epoch",
+    save_strategy="no",
     logging_strategy="epoch",
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
     num_train_epochs=3,
     learning_rate=2e-5,
     weight_decay=0.01,
-    load_best_model_at_end=True,
-    metric_for_best_model="f1",
-    greater_is_better=True,
+    report_to="none",
 )
 
 trainer = Trainer(
@@ -79,9 +77,7 @@ trainer = Trainer(
 )
 
 trainer.train()
-
 print("Test results:")
 print(trainer.evaluate(tokenized["test"]))
-
 trainer.save_model("./phish_model_best")
 tokenizer.save_pretrained("./phish_model_best")
