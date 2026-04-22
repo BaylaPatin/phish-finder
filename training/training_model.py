@@ -13,9 +13,9 @@ MODEL_NAME = "distilbert-base-uncased"
 dataset = load_dataset(
     "csv",
     data_files={
-        "train": "train.csv",
-        "validation": "valid.csv",
-        "test": "test.csv",
+        "train": "training/train.csv",
+        "validation": "training/valid.csv",
+        "test": "training/test.csv",
     },
 )
 
