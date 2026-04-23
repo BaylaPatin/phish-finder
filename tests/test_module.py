@@ -1,4 +1,4 @@
-from detectors.url_analyzer import analyze_urls_from_text
+from detectors.url_analyzer import analyze_urls_from_text, analyze_url
 from detectors.header_analyzer import analyze_header
 
 
@@ -8,10 +8,21 @@ def test_url():
     http://secure-login-bank-alert.xyz/reset
     """
 
+    print("URL RESULTS FROM MESSAGE:")
     results = analyze_urls_from_text(message)
-    print("URL RESULTS:")
     for result in results:
         print(result)
+
+    print("\nDIRECT URL TESTS:")
+    test_urls = [
+        "https://paypal.com",
+        "http://192.168.1.10/login",
+        "http://verify-account-security-login.example.xyz/reset/password",
+        "https://sub.domain.example.com",
+    ]
+
+    for url in test_urls:
+        print(analyze_url(url))
 
 
 def test_header():
