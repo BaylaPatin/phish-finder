@@ -26,14 +26,19 @@ def test_url():
 
 
 def test_header():
-    header = """From: PayPal <support@paypal.com>
+    print("\nHEADER TEST 1:")
+    header1 = """From: PayPal <support@paypal.com>
 Reply-To: attacker@gmail.com
-Authentication-Results: spf=fail dkim=fail
+Authentication-Results: spf=fail dkim=fail dmarc=fail
 """
+    print(analyze_header(header1))
 
-    result = analyze_header(header)
-    print("\nHEADER RESULT:")
-    print(result)
+    print("\nHEADER TEST 2:")
+    header2 = """From: Amazon <support@amazon.com>
+Reply-To: support@amazon.com
+Authentication-Results: spf=pass dkim=pass dmarc=pass
+"""
+    print(analyze_header(header2))
 
 
 if __name__ == "__main__":
