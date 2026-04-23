@@ -80,6 +80,10 @@ def analyze_header(header):
         "reply_to_email": reply_to_email,
         "from_domain": from_domain,
         "reply_to_domain": reply_to_domain,
+        "indicators": {
+            "from_domain": from_domain,
+            "reply_to_domain": reply_to_domain,
+        },
         "score": score,
         "risk_level": get_risk_level(score),
         "reasons": reasons,

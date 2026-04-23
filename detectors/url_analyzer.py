@@ -89,6 +89,9 @@ def analyze_url(url):
     return {
         "url": url,
         "domain": domain,
+        "indicators": {
+            "domain": domain,
+        },
         "score": score,
         "risk_level": get_risk_level(score),
         "reasons": reasons,
